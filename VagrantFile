@@ -1,0 +1,21 @@
+Vagrant.configure("2") do |config|
+
+TENANT_ID = ENV['TENANT_ID']
+CLIENT_ID = ENV['CLIENT_ID']
+SECRET_ID = ENV['SECRET_ID']
+SUBSCRIPTION_ID = ENV['SUBSCRIPTION_ID']
+RG_NAME = ENV['RG_NAME']
+
+    config.vm.define "vault_server" do |vault_server|
+      vault_server.vm.hostname = "vault-server"
+      vault_server.vm.box = "martinhristov90/vault"
+      vault_server.vm.provision "shell", path: "./configs/scripts/vaultAzure.sh", privileged: false, env: {
+        "TENANT_ID" => TENANT_ID,
+        "CLIENT_ID" => CLIENT_ID,
+        "SECRET_ID" => SECRET_ID,
+        "SUBSCRIPTION_ID" => SUBSCRIPTION_ID,
+        "RG_NAME" => RG_NAME
+      }
+      vault_server.vm.network "private_network", ip: "192.168.1.10"
+    end
+end
