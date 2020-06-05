@@ -10,6 +10,9 @@
 ### How to use it :
 
 - Clone the repository with `git clone`
+
+In order to retrieve the information needed for setting the environment variables you can follow [this](https://learn.hashicorp.com/vault/secrets-management/azure-creds) guide.
+
 - Setup the following environment variables :
 ```
 export TENANT_ID=YOUR_TENANT_ID
@@ -18,7 +21,6 @@ export SECRET_ID=YOUR_SECRET_ID
 export SUBSCRIPTION_ID=YOUR_SUBSCRIPTION_ID
 export RG_NAME=YOUR_RG_NAME
 ```
-In order to retrieve the information needed for setting the environment variables you can fallow [this](https://learn.hashicorp.com/vault/secrets-management/azure-creds) guide.
 
 - Execute `vagrant up`
 - Setup your Vault server address with `export VAULT_ADDR=http://127.0.0.1:8200`
